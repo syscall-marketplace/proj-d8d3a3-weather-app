@@ -1,8 +1,9 @@
 import axios from 'axios';
 import type { WeatherData, WeatherApiResponse } from '../types/weather';
-import { API_CONFIG, ENDPOINTS } from '../config/api';
 
-const API_URL = `${API_CONFIG.BASE_URL}${ENDPOINTS.CURRENT_WEATHER}`;
+const API_BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
+const API_KEY = import.meta.env.VITE_OPENWEATHERMAP_API_KEY as string;
+const UNITS = 'metric';
 
 function transformResponse(data: WeatherApiResponse): WeatherData {
   return {
@@ -22,11 +23,11 @@ export async function fetchWeatherByCity(city: string): Promise<WeatherData> {
   }
 
   try {
-    const response = await axios.get<WeatherApiResponse>(API_URL, {
+    const response = await axios.get<WeatherApiResponse>(API_BASE_URL, {
       params: {
         q: city,
-        appid: API_CONFIG.API_KEY,
-        units: API_CONFIG.UNITS,
+        appid: API_KEY,
+        units: UNITS,
       },
     });
 
@@ -54,12 +55,12 @@ export async function fetchWeatherByCoords(latitude: number, longitude: number):
   }
 
   try {
-    const response = await axios.get<WeatherApiResponse>(API_URL, {
+    const response = await axios.get<WeatherApiResponse>(API_BASE_URL, {
       params: {
         lat: latitude,
         lon: longitude,
-        appid: API_CONFIG.API_KEY,
-        units: API_CONFIG.UNITS,
+        appid: API_KEY,
+        units: UNITS,
       },
     });
 
