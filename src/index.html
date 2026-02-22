@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Weather App</h1>
+    </header>
+    <main>
+      <div id="search-container">
+        <input type="text" id="city-input" placeholder="Enter city name...">
+        <button id="search-btn">Search</button>
+        <button id="location-btn">Use My Location</button>
+      </div>
+      <div id="weather-display"></div>
+      <div id="loading" class="hidden">Loading...</div>
+      <div id="error" class="hidden"></div>
+    </main>
+  </div>
+  <script type="module" src="main.ts"></script>
+</body>
+</html>
