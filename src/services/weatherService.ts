@@ -3,6 +3,7 @@ import type { WeatherData, WeatherApiResponse } from '../types/weather';
 
 const API_BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 const API_KEY = import.meta.env.VITE_OPENWEATHERMAP_API_KEY as string;
+const UNITS = 'metric';
 
 function transformResponse(data: WeatherApiResponse): WeatherData {
   return {
@@ -26,7 +27,7 @@ export async function fetchWeatherByCity(city: string): Promise<WeatherData> {
       params: {
         q: city,
         appid: API_KEY,
-        units: 'metric',
+        units: UNITS,
       },
     });
 
@@ -59,7 +60,7 @@ export async function fetchWeatherByCoords(latitude: number, longitude: number):
         lat: latitude,
         lon: longitude,
         appid: API_KEY,
-        units: 'metric',
+        units: UNITS,
       },
     });
 
